@@ -1,4 +1,6 @@
 #%% REQUEST PRICE DATA
+import requests
+import pandas as pd
 
 def get_tar(use_tar,dStart,dEnd):
     '''
@@ -46,6 +48,6 @@ def get_tar(use_tar,dStart,dEnd):
     
     # Make timeseries out of fixed price
     if use_tar==3:
-        prices=pd.Series(data=prices,index=pd.date_range(prices.index[-1], dEnd, freq='30min', closed="left")).fillna(method='ffill')[dStart:dEnd]
+        prices=pd.Series(data=prices,index=pd.date_range(prices.index[-1], dEnd, freq='30min', inclusive="left")).fillna(method='ffill')[dStart:dEnd]
     
     return prices

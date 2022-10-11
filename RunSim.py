@@ -1,5 +1,7 @@
+import pandas as pd
+import numpy as np
 #%%
-def simcost(tindex,ch_start,dch_start,dem_df,batparams,tar):
+def simcost(tindex,ts,ch_start,dch_start,dem_df,batparams,tar):
     '''
     Parameters
     ----------

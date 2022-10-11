@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import pickle
 import numpy as np
-import requests 
 import CallAPI as ca
 import RunSim as rs
 
@@ -46,14 +45,14 @@ dem_df = dem_df_full['elec_demand_W'].resample(samp).mean()
 ch_start0 = dt.time(3)
 dch_start0 = dt.time(14)
 
-tindex=pd.date_range(dStart, dEnd, freq=samp, closed="left")
+tindex=pd.date_range(dStart, dEnd, freq=samp, inclusive="left")
 
 batparams = dict()
 batparams['BCAP'] = Bat_capacity*3600
 batparams['ch_max'] = ch_max
 batparams['Eff'] = Eff
 
-res_df,cost_df = rs.simcost(tindex,ch_start0,dch_start0,dem_df,batparams,tariffs)
+res_df,cost_df = rs.simcost(tindex,ts,ch_start0,dch_start0,dem_df,batparams,tariffs)
 
 #%% Battery strategy search
  
@@ -67,7 +66,7 @@ for jj in range(0,16):
     for ii in range(jj,21):
         ch_start = dt.time(jj)
         dch_start = dt.time(ii)
-        res_df0,cost_df0 = rs.simcost(tindex,ch_start,dch_start,dem_df,batparams,tariffs)
+        res_df0,cost_df0 = rs.simcost(tindex,ts,ch_start,dch_start,dem_df,batparams,tariffs)
         solsave[str(jj)+":00"][str(ii)+":00"] = cost_df0.Agile.sum()
         
         if cost_df0.Agile.sum()<bestsol:
@@ -76,6 +75,7 @@ for jj in range(0,16):
             bestsol = cost_df0.Agile.sum()
             best_dch_start = dch_start
             best_ch_start = ch_start
+
 
 #%%
 fig, ax1 = plt.subplots(figsize=(15, 6), dpi=300, edgecolor='k')
