@@ -8,7 +8,7 @@
 - The best battery operational strategy is found for the week provided.
 - The results generated are presented using Dash, a dashboard found at: **http://127.0.0.1:8050/**
 
-===
+---
 
 ## Instructions
 
