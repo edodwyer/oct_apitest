@@ -20,7 +20,7 @@
 
 ### Option 1: Run directly from shell
 - Set user parameters in **user_inputs.py**
-- Run the following: *python run_cost_comparison*
+- Run the following: *python run_cost_comparison.py*
 - Results are generated and presented at **http://127.0.0.1:8050/**
 
 ### Option 2: Run via jupyter notebook
