@@ -29,5 +29,13 @@
 - Run each cell, modifying user parameters if desired.
 - Results are plotted directly in notebook
 
+---
+## User parameters
+- Start date: Any date/time between *01/01/2020 00:00* and *01/10/2022 00:00* in format *dd/mm/yyyy hh:mm*
+- Agile version: Newer agile tariff codes have come along. Choose either *0, 1, 2*. 0 corresponds to *AGILE-18-02-21*, 1 corresponds to *AGILE-22-07-22* and 2 corresponds to *AGILE-22-08-31*. 1 and 2 are not available for more older start date choices (as they didn't exist at the time)
+- Bat_capacity: The capacity of the battery can be defined in kWh (must be a positive number)
+- ch_max: The maximum charge and discharge power of the battery can be defined in kW (must be a positive number)
+- Eff: The round-trip efficiency can be defined between 0 and 1 (1 corresponds to 100% efficiency, i.e., a battery with no losses)
+
 
 
