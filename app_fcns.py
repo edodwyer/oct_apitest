@@ -45,6 +45,18 @@ def get_params(user_params):
     
     return params, batparams, tindex
 
+#%% Get tariff availability
+def get_tariff_availability(params):
+    
+    use_tar=params['agile_version']
+    availability1, availstr1 = ca.is_tar_avail(use_tar,params['dStart'],params['dEnd'])
+    
+    use_tar=3
+    availability1, availstr2 = ca.is_tar_avail(use_tar,params['dStart'],params['dEnd'])
+    
+    return availstr1, availstr2
+
+
 #%% Get tariffs
 
 def get_tariffs(params):
@@ -58,6 +70,7 @@ def get_tariffs(params):
     tariffs['Fixed'] = ca.get_tar(use_tar,params['dStart'],params['dEnd']).resample(params['samp']).first().fillna(method="ffill")
     
     return tariffs
+
 
 #%% Get demand data
 
